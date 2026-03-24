@@ -1,6 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { FaEarthAmericas } from "react-icons/fa6";
+import { IoIosCreate } from "react-icons/io";
+import { FaRegEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' })
@@ -114,7 +118,7 @@ const Register = () => {
                 onClick={() => setShowPass(!showPass)}
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"
               >
-                {showPass ? '🙈' : '👁️'}
+                {showPass ? <FaEyeSlash/> : <FaRegEye/>}
               </button>
             </div>
           </div>
@@ -137,7 +141,7 @@ const Register = () => {
             onClick={handleSubmit}
             className="w-full bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition text-sm mt-2"
           >
-            Create Account 🌿
+            Create Account <IoIosCreate/>
           </button>
 
         </div>
@@ -151,7 +155,7 @@ const Register = () => {
 
         {/* Google */}
         <button className="w-full border border-gray-200 text-gray-600 py-3 rounded-xl text-sm font-medium hover:bg-gray-50 transition flex items-center justify-center gap-2">
-          <span className="text-lg">🌐</span> Continue with Google
+          <span className="text-lg"><FaEarthAmericas/></span> Continue with Google
         </button>
 
         {/* Login Link */}
