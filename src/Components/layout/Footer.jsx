@@ -1,11 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { GrYoga } from "react-icons/gr";
-import { FaSearchLocation } from "react-icons/fa";
-import { FaPhoneAlt } from "react-icons/fa";
-
+import { FaSearchLocation, FaPhoneAlt } from "react-icons/fa";
 import { CiMail } from "react-icons/ci";
-
 
 const Footer = () => {
   return (
@@ -14,9 +11,12 @@ const Footer = () => {
 
         {/* Brand */}
         <div>
-          <h2 className="text-2xl font-bold text-white mb-3"><GrYoga/>YogaZen</h2>
+          <h2 className="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+            <GrYoga className="text-green-400" />
+            YogaZen
+          </h2>
           <p className="text-sm text-gray-400 leading-relaxed">
-            Find your inner peace with our expert-guided yoga classes. 
+            Find your inner peace with our expert-guided yoga classes.
             Mind, body, and soul — all in one place.
           </p>
         </div>
@@ -26,10 +26,10 @@ const Footer = () => {
           <h3 className="text-white font-semibold mb-4">Quick Links</h3>
           <ul className="space-y-2 text-sm">
             {[
-              { name: 'Home',        path: '/' },
-              { name: 'About',       path: '/about' },
-              { name: 'Classes',     path: '/classes' },
-              { name: 'Schedule',    path: '/schedule' },
+              { name: 'Home', path: '/' },
+              { name: 'About', path: '/about' },
+              { name: 'Classes', path: '/classes' },
+              { name: 'Schedule', path: '/schedule' },
               { name: 'Instructors', path: '/instructors' },
             ].map((link) => (
               <li key={link.name}>
@@ -49,10 +49,10 @@ const Footer = () => {
           <h3 className="text-white font-semibold mb-4">Support</h3>
           <ul className="space-y-2 text-sm">
             {[
-              { name: 'Blog',     path: '/blog' },
-              { name: 'Pricing',  path: '/pricing' },
-              { name: 'Contact',  path: '/contact' },
-              { name: 'Login',    path: '/login' },
+              { name: 'Blog', path: '/blog' },
+              { name: 'Pricing', path: '/pricing' },
+              { name: 'Contact', path: '/contact' },
+              { name: 'Login', path: '/login' },
               { name: 'Register', path: '/register' },
             ].map((link) => (
               <li key={link.name}>
@@ -70,13 +70,17 @@ const Footer = () => {
         {/* Contact Info */}
         <div>
           <h3 className="text-white font-semibold mb-4">Contact Us</h3>
-          <ul className="space-y-2 text-sm text-gray-400">
-            <li><FaSearchLocation/> 123 Yoga Street, Delhi, India</li>
-            <li><FaPhoneAlt/> +91 98765 43210</li>
-            <li><CiMail/>hello@yogazen.com</li>
+          <ul className="space-y-3 text-sm text-gray-400">
+            <li className="flex items-center gap-2">
+              <FaSearchLocation /> 123 Yoga Street, Delhi, India
+            </li>
+            <li className="flex items-center gap-2">
+              <FaPhoneAlt /> +91 98765 43210
+            </li>
+            <li className="flex items-center gap-2">
+              <CiMail /> hello@yogazen.com
+            </li>
           </ul>
-
-          
         </div>
 
       </div>

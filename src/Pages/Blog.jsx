@@ -95,7 +95,7 @@ const Blog = () => {
           <input
             type="email"
             placeholder="Enter your email"
-            className="grow px-5 py-3 rounded-full text-gray-700 outline-none text-sm w-full"
+            className="grow px-5 py-3 rounded-full bg-white text-gray-700 outline-none text-sm w-full"
           />
           <button className="bg-white text-green-600 px-6 py-3 rounded-full font-semibold hover:bg-green-50 transition w-full sm:w-auto">
             Subscribe
