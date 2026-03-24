@@ -1,6 +1,11 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { blogData } from '../data/blogData'
+import { FaFaceFlushed } from "react-icons/fa6"
+import { FaPenNib, FaCalendar, FaClock, FaFolder } from 'react-icons/fa'
+import { MdEmail } from 'react-icons/md'
+import { GiMeditation } from 'react-icons/gi'
+import { iconMap } from '../data/iconMap'
 
 const BlogPost = () => {
   const { id } = useParams()
@@ -9,44 +14,28 @@ const BlogPost = () => {
   if (!blog) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-center px-4">
-        <div className="text-6xl mb-4">😕</div>
+        <div className="text-6xl mb-4"><FaFaceFlushed /></div>
         <h2 className="text-2xl font-bold text-gray-800 mb-2">Post Not Found</h2>
         <p className="text-gray-400 mb-6">The article you're looking for doesn't exist.</p>
-        <Link
-          to="/blog"
-          className="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition text-sm"
-        >
+        <Link to="/blog" className="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition text-sm">
           Back to Blog
         </Link>
       </div>
     )
   }
 
+  const BlogIconComponent = iconMap[blog.icon]
+
   const relatedPosts = blogData.filter(
     (b) => b.category === blog.category && b.id !== blog.id
   ).slice(0, 3)
 
   const content = [
-    {
-      heading: 'Introduction',
-      text: `Yoga has been practiced for thousands of years and continues to grow in popularity around the world. ${blog.desc} In this article, we dive deep into everything you need to know to get started and make the most of your practice.`,
-    },
-    {
-      heading: 'Why It Matters',
-      text: 'Whether you are a complete beginner or a seasoned practitioner, understanding the core principles behind this topic can transform your relationship with yoga. Many students report feeling more grounded, focused, and energetic after incorporating these practices into their daily routine.',
-    },
-    {
-      heading: 'Getting Started',
-      text: 'The best way to begin is to start small and stay consistent. Even 10–15 minutes a day can make a significant difference over time. Find a quiet space, wear comfortable clothing, and approach each session with an open mind and a gentle attitude toward yourself.',
-    },
-    {
-      heading: 'Tips from Our Instructors',
-      text: 'Our expert instructors at YogaZen recommend focusing on your breath above all else. The breath is your anchor — it keeps you present and connected to each movement. Don\'t rush through postures; instead, hold each one mindfully and listen to what your body is telling you.',
-    },
-    {
-      heading: 'Final Thoughts',
-      text: 'Remember that yoga is a journey, not a destination. Progress may be slow at first, but with patience and dedication, the benefits will compound over time. We hope this article inspires you to take the next step on your wellness journey. See you on the mat! 🧘',
-    },
+    { heading: 'Introduction', text: `Yoga has been practiced for thousands of years and continues to grow in popularity around the world. ${blog.desc} In this article, we dive deep into everything you need to know to get started and make the most of your practice.` },
+    { heading: 'Why It Matters', text: 'Whether you are a complete beginner or a seasoned practitioner, understanding the core principles behind this topic can transform your relationship with yoga. Many students report feeling more grounded, focused, and energetic after incorporating these practices into their daily routine.' },
+    { heading: 'Getting Started', text: 'The best way to begin is to start small and stay consistent. Even 10–15 minutes a day can make a significant difference over time. Find a quiet space, wear comfortable clothing, and approach each session with an open mind and a gentle attitude toward yourself.' },
+    { heading: 'Tips from Our Instructors', text: "Our expert instructors at YogaZen recommend focusing on your breath above all else. The breath is your anchor — it keeps you present and connected to each movement. Don't rush through postures; instead, hold each one mindfully and listen to what your body is telling you." },
+    { heading: 'Final Thoughts', text: 'Remember that yoga is a journey, not a destination. Progress may be slow at first, but with patience and dedication, the benefits will compound over time. We hope this article inspires you to take the next step on your wellness journey. See you on the mat!' },
   ]
 
   return (
@@ -77,19 +66,19 @@ const BlogPost = () => {
 
           {/* Meta */}
           <div className="flex flex-wrap items-center justify-center gap-4 mt-6 text-sm text-gray-400">
-            <span>✍️ {blog.author}</span>
+            <span className="flex items-center gap-1"><FaPenNib className="text-xs" /> {blog.author}</span>
             <span>·</span>
-            <span>📅 {blog.date}</span>
+            <span className="flex items-center gap-1"><FaCalendar className="text-xs" /> {blog.date}</span>
             <span>·</span>
-            <span>⏱ {blog.readTime}</span>
+            <span className="flex items-center gap-1"><FaClock className="text-xs" /> {blog.readTime}</span>
           </div>
         </div>
       </section>
 
-      {/* Emoji Banner */}
+      {/* Icon Banner */}
       <div className="max-w-3xl mx-auto px-4 -mt-6 sm:-mt-8 mb-10">
-        <div className="bg-white rounded-3xl shadow-md h-48 sm:h-64 flex items-center justify-center text-8xl sm:text-9xl">
-          {blog.emoji}
+        <div className="bg-white rounded-3xl shadow-md h-48 sm:h-64 flex items-center justify-center">
+          {BlogIconComponent && <BlogIconComponent className="text-8xl sm:text-9xl text-green-600" />}
         </div>
       </div>
 
@@ -98,6 +87,7 @@ const BlogPost = () => {
 
         {/* Article Content */}
         <article className="lg:col-span-2">
+
           {/* Intro Highlight */}
           <div className="bg-green-50 border-l-4 border-green-500 rounded-r-2xl p-5 mb-8 text-gray-600 text-base leading-relaxed italic">
             "{blog.desc}"
@@ -106,22 +96,15 @@ const BlogPost = () => {
           {/* Sections */}
           {content.map((section, i) => (
             <div key={i} className="mb-8">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3">
-                {section.heading}
-              </h2>
-              <p className="text-gray-500 leading-relaxed text-base">
-                {section.text}
-              </p>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3">{section.heading}</h2>
+              <p className="text-gray-500 leading-relaxed text-base">{section.text}</p>
             </div>
           ))}
 
           {/* Tags */}
           <div className="flex flex-wrap gap-2 mt-10 pt-8 border-t">
             {['Yoga', blog.category, 'Wellness', 'Mindfulness'].map((tag) => (
-              <span
-                key={tag}
-                className="bg-gray-100 text-gray-500 text-xs px-3 py-1.5 rounded-full hover:bg-green-100 hover:text-green-600 transition cursor-pointer"
-              >
+              <span key={tag} className="bg-gray-100 text-gray-500 text-xs px-3 py-1.5 rounded-full hover:bg-green-100 hover:text-green-600 transition cursor-pointer">
                 #{tag}
               </span>
             ))}
@@ -129,20 +112,16 @@ const BlogPost = () => {
 
           {/* Author Card */}
           <div className="bg-green-50 rounded-3xl p-6 mt-10 flex flex-col sm:flex-row items-center sm:items-start gap-5">
-            <div className="text-5xl bg-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-sm flex-shrink-2">
-              🧘‍♀️
+            <div className="bg-white w-16 h-16 rounded-2xl flex items-center justify-center shadow-sm shrink-0">
+              <GiMeditation className="text-4xl text-green-600" />
             </div>
             <div>
               <p className="text-xs text-green-600 font-semibold uppercase tracking-widest mb-1">Written by</p>
               <h3 className="text-gray-800 font-bold text-lg">{blog.author}</h3>
               <p className="text-gray-500 text-sm mt-1 leading-relaxed">
-                A certified yoga instructor at YogaZen with years of experience 
-                helping students achieve balance, strength, and inner peace.
+                A certified yoga instructor at YogaZen with years of experience helping students achieve balance, strength, and inner peace.
               </p>
-              <Link
-                to="/instructors"
-                className="inline-block mt-3 text-green-600 text-sm font-semibold hover:underline"
-              >
+              <Link to="/instructors" className="inline-block mt-3 text-green-600 text-sm font-semibold hover:underline">
                 View Profile →
               </Link>
             </div>
@@ -150,16 +129,10 @@ const BlogPost = () => {
 
           {/* Navigation */}
           <div className="flex flex-col sm:flex-row justify-between gap-4 mt-10 pt-8 border-t">
-            <Link
-              to="/blog"
-              className="flex items-center gap-2 text-green-600 font-semibold text-sm hover:underline"
-            >
+            <Link to="/blog" className="flex items-center gap-2 text-green-600 font-semibold text-sm hover:underline">
               ← Back to Blog
             </Link>
-            <Link
-              to="/classes"
-              className="flex items-center gap-2 text-green-600 font-semibold text-sm hover:underline"
-            >
+            <Link to="/classes" className="flex items-center gap-2 text-green-600 font-semibold text-sm hover:underline">
               Explore Classes →
             </Link>
           </div>
@@ -170,15 +143,13 @@ const BlogPost = () => {
 
           {/* About */}
           <div className="bg-green-50 rounded-3xl p-6 text-center">
-            <div className="text-4xl mb-3">🧘 YogaZen</div>
+            <div className="flex items-center justify-center gap-2 text-green-600 font-bold text-xl mb-3">
+              <GiMeditation className="text-3xl" /> YogaZen
+            </div>
             <p className="text-gray-500 text-sm leading-relaxed">
-              Your trusted source for yoga tips, wellness guides, 
-              and mindful living. Join our community today!
+              Your trusted source for yoga tips, wellness guides, and mindful living. Join our community today!
             </p>
-            <Link
-              to="/register"
-              className="inline-block mt-4 bg-green-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition"
-            >
+            <Link to="/register" className="inline-block mt-4 bg-green-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition">
               Join Free
             </Link>
           </div>
@@ -188,12 +159,10 @@ const BlogPost = () => {
             <h3 className="text-gray-800 font-bold text-lg mb-4">Categories</h3>
             <div className="space-y-2">
               {['Health', 'Meditation', 'Wellness', 'Lifestyle'].map((cat) => (
-                <Link
-                  key={cat}
-                  to="/blog"
-                  className="flex items-center justify-between text-sm text-gray-500 hover:text-green-600 transition py-1"
-                >
-                  <span>📂 {cat}</span>
+                <Link key={cat} to="/blog" className="flex items-center justify-between text-sm text-gray-500 hover:text-green-600 transition py-1">
+                  <span className="flex items-center gap-2">
+                    <FaFolder className="text-xs text-green-500" /> {cat}
+                  </span>
                   <span className="bg-gray-200 text-gray-500 text-xs px-2 py-0.5 rounded-full">
                     {blogData.filter((b) => b.category === cat).length}
                   </span>
@@ -206,36 +175,31 @@ const BlogPost = () => {
           <div className="bg-gray-50 rounded-3xl p-6">
             <h3 className="text-gray-800 font-bold text-lg mb-4">Recent Posts</h3>
             <div className="space-y-4">
-              {blogData.slice(0, 4).map((b) => (
-                <Link
-                  key={b.id}
-                  to={`/blog/${b.id}`}
-                  className="flex items-start gap-3 group"
-                >
-                  <div className="text-2xl bg-white w-10 h-10 rounded-xl flex items-center justify-center shadow-sm flex-shrink-2">
-                    {b.emoji}
-                  </div>
-                  <div>
-                    <p className="text-gray-700 text-sm font-medium leading-snug group-hover:text-green-600 transition line-clamp-2">
-                      {b.title}
-                    </p>
-                    <p className="text-gray-400 text-xs mt-1">{b.date}</p>
-                  </div>
-                </Link>
-              ))}
+              {blogData.slice(0, 4).map((b) => {
+                const RecentIcon = iconMap[b.icon]
+                return (
+                  <Link key={b.id} to={`/blog/${b.id}`} className="flex items-start gap-3 group">
+                    <div className="bg-white w-10 h-10 rounded-xl flex items-center justify-center shadow-sm shrink-0">
+                      {RecentIcon && <RecentIcon className="text-xl text-green-600" />}
+                    </div>
+                    <div>
+                      <p className="text-gray-700 text-sm font-medium leading-snug group-hover:text-green-600 transition line-clamp-2">
+                        {b.title}
+                      </p>
+                      <p className="text-gray-400 text-xs mt-1">{b.date}</p>
+                    </div>
+                  </Link>
+                )
+              })}
             </div>
           </div>
 
           {/* Newsletter */}
           <div className="bg-green-600 rounded-3xl p-6 text-white text-center">
-            <div className="text-3xl mb-2">✉️</div>
+            <MdEmail className="text-3xl mx-auto mb-2" />
             <h3 className="font-bold text-lg mb-1">Newsletter</h3>
             <p className="text-green-100 text-sm mb-4">Get weekly yoga tips in your inbox.</p>
-            <input
-              type="email"
-              placeholder="Your email"
-              className="w-full px-4 py-2.5 rounded-xl text-gray-700 text-sm outline-none mb-3"
-            />
+            <input type="email" placeholder="Your email" className="w-full px-4 py-2.5 rounded-xl text-gray-700 text-sm outline-none mb-3" />
             <button className="w-full bg-white text-green-600 py-2.5 rounded-xl font-semibold text-sm hover:bg-green-50 transition">
               Subscribe
             </button>
@@ -249,37 +213,32 @@ const BlogPost = () => {
         <section className="bg-green-50 py-14">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-10">
-              <span className="text-green-600 font-semibold text-sm uppercase tracking-widest">
-                Keep Reading
-              </span>
+              <span className="text-green-600 font-semibold text-sm uppercase tracking-widest">Keep Reading</span>
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mt-2">Related Articles</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {relatedPosts.map((post) => (
-                <div
-                  key={post.id}
-                  className="bg-white rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden"
-                >
-                  <div className="bg-green-50 h-32 flex items-center justify-center text-6xl">
-                    {post.emoji}
+              {relatedPosts.map((post) => {
+                const PostIcon = iconMap[post.icon]
+                return (
+                  <div key={post.id} className="bg-white rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden">
+                    <div className="bg-green-50 h-32 flex items-center justify-center">
+                      {PostIcon && <PostIcon className="text-6xl text-green-600" />}
+                    </div>
+                    <div className="p-5">
+                      <span className="text-xs bg-green-100 text-green-600 px-3 py-0.5 rounded-full font-semibold">
+                        {post.category}
+                      </span>
+                      <h3 className="text-gray-800 font-bold text-base mt-2 mb-2 leading-snug">{post.title}</h3>
+                      <p className="text-gray-400 text-xs mb-3 flex items-center gap-1">
+                        <FaClock className="text-xs" /> {post.readTime} · {post.date}
+                      </p>
+                      <Link to={`/blog/${post.id}`} className="text-green-600 text-sm font-semibold hover:underline">
+                        Read More →
+                      </Link>
+                    </div>
                   </div>
-                  <div className="p-5">
-                    <span className="text-xs bg-green-100 text-green-600 px-3 py-0.5 rounded-full font-semibold">
-                      {post.category}
-                    </span>
-                    <h3 className="text-gray-800 font-bold text-base mt-2 mb-2 leading-snug">
-                      {post.title}
-                    </h3>
-                    <p className="text-gray-400 text-xs mb-3">⏱ {post.readTime} · {post.date}</p>
-                    <Link
-                      to={`/blog/${post.id}`}
-                      className="text-green-600 text-sm font-semibold hover:underline"
-                    >
-                      Read More →
-                    </Link>
-                  </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </section>
@@ -287,16 +246,9 @@ const BlogPost = () => {
 
       {/* CTA */}
       <section className="bg-green-600 py-14 text-center text-white px-4">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-3">
-          Ready to Start Your Yoga Journey?
-        </h2>
-        <p className="text-green-100 mb-8 text-base sm:text-lg">
-          Join thousands of students at YogaZen and transform your life.
-        </p>
-        <Link
-          to="/classes"
-          className="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-green-50 transition"
-        >
+        <h2 className="text-2xl sm:text-3xl font-bold mb-3">Ready to Start Your Yoga Journey?</h2>
+        <p className="text-green-100 mb-8 text-base sm:text-lg">Join thousands of students at YogaZen and transform your life.</p>
+        <Link to="/classes" className="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-green-50 transition">
           Explore Classes
         </Link>
       </section>

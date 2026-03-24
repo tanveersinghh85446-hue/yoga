@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { FaEye, FaEyeSlash, FaRocket, FaGoogle } from 'react-icons/fa'
+import { GiMeditation } from 'react-icons/gi'
 
 const Login = () => {
   const [form, setForm] = useState({ email: '', password: '' })
@@ -18,8 +20,7 @@ const Login = () => {
       setError('Please fill in all fields.')
       return
     }
-    // Yahan baad mein auth logic add kar sakte ho
-    alert('Login Successful! 🎉')
+    alert('Login Successful!')
   }
 
   return (
@@ -28,7 +29,9 @@ const Login = () => {
 
         {/* Logo */}
         <div className="text-center mb-8">
-          <Link to="/" className="text-3xl font-bold text-green-600">🧘 YogaZen</Link>
+          <Link to="/" className="text-3xl font-bold text-green-600 flex items-center justify-center gap-2">
+            <GiMeditation className="text-4xl" /> YogaZen
+          </Link>
           <h2 className="text-2xl font-bold text-gray-800 mt-3">Welcome Back!</h2>
           <p className="text-gray-400 text-sm mt-1">Login to continue your yoga journey</p>
         </div>
@@ -71,9 +74,9 @@ const Login = () => {
               <button
                 type="button"
                 onClick={() => setShowPass(!showPass)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition"
               >
-                {showPass ? '🙈' : '👁️'}
+                {showPass ? <FaEyeSlash className="text-base" /> : <FaEye className="text-base" />}
               </button>
             </div>
           </div>
@@ -88,9 +91,9 @@ const Login = () => {
           {/* Submit */}
           <button
             onClick={handleSubmit}
-            className="w-full bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition text-sm mt-2"
+            className="w-full bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition text-sm mt-2 flex items-center justify-center gap-2"
           >
-            Login 🚀
+            Login <FaRocket className="text-sm" />
           </button>
 
         </div>
@@ -104,7 +107,7 @@ const Login = () => {
 
         {/* Google Login */}
         <button className="w-full border border-gray-200 text-gray-600 py-3 rounded-xl text-sm font-medium hover:bg-gray-50 transition flex items-center justify-center gap-2">
-          <span className="text-lg">🌐</span> Continue with Google
+          <FaGoogle className="text-lg text-red-500" /> Continue with Google
         </button>
 
         {/* Register Link */}

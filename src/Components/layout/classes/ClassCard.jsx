@@ -1,12 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FaClock } from 'react-icons/fa'
+import { iconMap } from '../../../data/iconMap'
 
 const ClassCard = ({ cls }) => {
+  const IconComponent = iconMap[cls.icon]
+
   return (
     <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition duration-300 overflow-hidden border border-gray-100">
       {/* Top Color Block */}
-      <div className="bg-green-50 h-36 flex items-center justify-center text-7xl">
-        {cls.emoji}
+      <div className="bg-green-50 h-36 flex items-center justify-center">
+        {IconComponent && <IconComponent className="text-7xl text-green-600" />}
       </div>
 
       {/* Content */}
@@ -24,7 +28,9 @@ const ClassCard = ({ cls }) => {
         <p className="text-gray-400 text-sm leading-relaxed mb-4">{cls.desc}</p>
 
         <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-          <span>⏱ {cls.duration}</span>
+          <span className="flex items-center gap-1">
+            <FaClock className="text-xs" /> {cls.duration}
+          </span>
           <span className="text-green-600 font-bold text-base">{cls.price}</span>
         </div>
 

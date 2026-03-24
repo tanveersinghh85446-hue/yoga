@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
+import { GiPlantSeed, GiMeditation } from 'react-icons/gi'
+import { FaCrown, FaStar, FaCheck, FaPlus, FaMinus } from 'react-icons/fa'
 
 const Pricing = () => {
   const [isYearly, setIsYearly] = useState(false)
@@ -7,7 +9,7 @@ const Pricing = () => {
   const plans = [
     {
       name: 'Starter',
-      emoji: '🌱',
+      icon: <GiPlantSeed className="text-5xl text-green-500 mx-auto mb-3" />,
       monthlyPrice: '₹499',
       yearlyPrice: '₹4,999',
       desc: 'Perfect for beginners who want to explore yoga.',
@@ -24,13 +26,13 @@ const Pricing = () => {
     },
     {
       name: 'Pro',
-      emoji: '🧘‍♀️',
+      icon: <GiMeditation className="text-5xl text-green-500 mx-auto mb-3" />,
       monthlyPrice: '₹999',
       yearlyPrice: '₹9,999',
       desc: 'Most popular plan for regular practitioners.',
       color: 'border-green-500 ring-2 ring-green-400',
       btnColor: 'bg-green-600 text-white hover:bg-green-700',
-      badge: '⭐ Most Popular',
+      badge: true,
       features: [
         'Unlimited Classes',
         'Access to All levels',
@@ -42,7 +44,7 @@ const Pricing = () => {
     },
     {
       name: 'Elite',
-      emoji: '👑',
+      icon: <FaCrown className="text-5xl text-yellow-500 mx-auto mb-3" />,
       monthlyPrice: '₹1,999',
       yearlyPrice: '₹19,999',
       desc: 'For dedicated yogis who want the full experience.',
@@ -87,7 +89,7 @@ const Pricing = () => {
             Choose a plan that fits your goals. No hidden charges, no confusion.
           </p>
 
-          {/* Monthly / Yearly Toggle */}
+          {/* Toggle */}
           <div className="flex items-center justify-center gap-3 mt-8">
             <span className={`text-sm font-medium ${!isYearly ? 'text-green-600' : 'text-gray-400'}`}>Monthly</span>
             <button
@@ -116,14 +118,15 @@ const Pricing = () => {
             >
               {/* Badge */}
               {plan.badge && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-green-600 text-white text-xs font-semibold px-4 py-1.5 rounded-full whitespace-nowrap">
-                  {plan.badge}
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-green-600 text-white text-xs font-semibold px-4 py-1.5 rounded-full whitespace-nowrap flex items-center gap-1">
+                  <FaStar className="text-yellow-300 text-xs" />
+                  Most Popular
                 </div>
               )}
 
               {/* Top */}
               <div className="text-center mb-6">
-                <div className="text-5xl mb-3">{plan.emoji}</div>
+                <div>{plan.icon}</div>
                 <h3 className="text-xl font-bold text-gray-800">{plan.name}</h3>
                 <p className="text-gray-400 text-sm mt-1">{plan.desc}</p>
                 <div className="mt-4">
@@ -140,7 +143,7 @@ const Pricing = () => {
               <ul className="space-y-3 mb-8 grow">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-2 text-sm text-gray-600">
-                    <span className="text-green-500 font-bold">✓</span>
+                    <FaCheck className="text-green-500 text-xs shrink-0" />
                     {feature}
                   </li>
                 ))}
@@ -155,7 +158,7 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ */}
       <section className="bg-green-50 py-14 sm:py-16">
         <div className="max-w-3xl mx-auto px-4">
           <div className="text-center mb-10">
@@ -165,17 +168,14 @@ const Pricing = () => {
 
           <div className="space-y-3">
             {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl shadow-sm overflow-hidden"
-              >
+              <div key={index} className="bg-white rounded-2xl shadow-sm overflow-hidden">
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
                   className="w-full flex items-center justify-between px-5 py-4 text-left"
                 >
                   <span className="text-gray-700 font-semibold text-sm sm:text-base">{faq.q}</span>
-                  <span className="text-green-600 text-xl ml-4 flex-shrink-2">
-                    {openFaq === index ? '−' : '+'}
+                  <span className="text-green-600 ml-4 shrink-0">
+                    {openFaq === index ? <FaMinus /> : <FaPlus />}
                   </span>
                 </button>
                 {openFaq === index && (
@@ -197,15 +197,12 @@ const Pricing = () => {
         <p className="text-green-100 mb-8 text-base sm:text-lg">
           No credit card required. Just show up and experience the magic of yoga.
         </p>
+        <a href="/contact" className="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-green-50 transition">
+          Book Free Trial
+        </a>
+      </section>
 
-        <a href="/contact"
-        className="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-green-50 transition"
-        >
-        Book Free Trial
-      </a>
-    </section>
-
-    </div >
+    </div>
   )
 }
 

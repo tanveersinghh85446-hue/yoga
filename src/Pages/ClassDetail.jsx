@@ -1,6 +1,11 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { classesData } from '../data/classesData'
+import { FaFaceFlushed } from "react-icons/fa6"
+import { GiMeditation } from "react-icons/gi"
+import { FiClock, FiCalendar } from "react-icons/fi"
+import { GiMuscleFat } from "react-icons/gi"
+import { FaBrain, FaHeart, FaMoon, FaLeaf } from "react-icons/fa"
 
 const levelColor = (level) => {
   if (level === 'Beginner') return 'bg-green-100 text-green-600'
@@ -15,7 +20,7 @@ const ClassDetail = () => {
   if (!cls) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-center px-4">
-        <div className="text-6xl mb-4">😕</div>
+        <div className="text-6xl mb-4"><FaFaceFlushed /></div>
         <h2 className="text-2xl font-bold text-gray-800 mb-2">Class Not Found</h2>
         <p className="text-gray-400 mb-6">The class you're looking for doesn't exist.</p>
         <Link
@@ -33,12 +38,12 @@ const ClassDetail = () => {
   ).slice(0, 3)
 
   const benefits = [
-    '🧘 Improves flexibility and balance',
-    '💪 Builds strength and stamina',
-    '🧠 Reduces stress and anxiety',
-    '❤️ Boosts heart health',
-    '😴 Improves sleep quality',
-    '🌿 Increases mindfulness',
+    { icon: <GiMeditation className="text-green-600 text-xl" />, text: 'Improves flexibility and balance' },
+    { icon: <GiMuscleFat className="text-green-600 text-xl" />, text: 'Builds strength and stamina' },
+    { icon: <FaBrain className="text-green-600 text-xl" />, text: 'Reduces stress and anxiety' },
+    { icon: <FaHeart className="text-green-600 text-xl" />, text: 'Boosts heart health' },
+    { icon: <FaMoon className="text-green-600 text-xl" />, text: 'Improves sleep quality' },
+    { icon: <FaLeaf className="text-green-600 text-xl" />, text: 'Increases mindfulness' },
   ]
 
   const schedule = [
@@ -57,7 +62,6 @@ const ClassDetail = () => {
 
           {/* Left */}
           <div>
-            {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-sm text-gray-400 mb-4 flex-wrap">
               <Link to="/" className="hover:text-green-600 transition">Home</Link>
               <span>/</span>
@@ -70,8 +74,8 @@ const ClassDetail = () => {
               <span className={`text-xs font-semibold px-3 py-1 rounded-full ${levelColor(cls.level)}`}>
                 {cls.level}
               </span>
-              <span className="text-xs text-gray-400 bg-gray-100 px-3 py-1 rounded-full">
-                ⏱ {cls.duration}
+              <span className="text-xs text-gray-400 bg-gray-100 px-3 py-1 rounded-full flex items-center gap-1">
+                <FiClock className="text-sm" /> {cls.duration}
               </span>
             </div>
 
@@ -104,7 +108,6 @@ const ClassDetail = () => {
               <p className="text-green-600 font-bold text-3xl mb-1">{cls.price}</p>
               <p className="text-gray-400 text-sm mb-6">per session</p>
 
-              {/* Stats */}
               <div className="grid grid-cols-3 gap-4 border-t pt-5">
                 <div>
                   <p className="text-green-600 font-bold text-lg">50+</p>
@@ -138,8 +141,9 @@ const ClassDetail = () => {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {benefits.map((benefit, i) => (
-              <div key={i} className="bg-green-50 rounded-2xl p-4 text-sm text-gray-600 font-medium">
-                {benefit}
+              <div key={i} className="bg-green-50 rounded-2xl p-4 text-sm text-gray-600 font-medium flex items-center gap-2">
+                {benefit.icon}
+                {benefit.text}
               </div>
             ))}
           </div>
@@ -161,7 +165,7 @@ const ClassDetail = () => {
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center text-lg">
-                    📅
+                    <FiCalendar className="text-green-600 text-xl" />
                   </div>
                   <span className="text-gray-700 font-semibold text-sm">{slot.day}</span>
                 </div>
@@ -188,8 +192,8 @@ const ClassDetail = () => {
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mt-2">Meet Your Instructor</h2>
           </div>
           <div className="bg-white rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 shadow-sm">
-            <div className="text-7xl bg-green-50 w-24 h-24 rounded-2xl flex items-center justify-center flex-shrink-2">
-              🧘‍♀️
+            <div className="bg-green-50 w-24 h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <GiMeditation className="text-green-600 text-5xl" />
             </div>
             <div>
               <h3 className="text-xl font-bold text-gray-800">Priya Sharma</h3>

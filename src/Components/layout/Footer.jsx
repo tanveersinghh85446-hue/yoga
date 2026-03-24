@@ -1,5 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { GrYoga } from "react-icons/gr";
+import { FaSearchLocation } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
+
+import { CiMail } from "react-icons/ci";
+
 
 const Footer = () => {
   return (
@@ -8,7 +14,7 @@ const Footer = () => {
 
         {/* Brand */}
         <div>
-          <h2 className="text-2xl font-bold text-white mb-3">🧘 YogaZen</h2>
+          <h2 className="text-2xl font-bold text-white mb-3"><GrYoga/>YogaZen</h2>
           <p className="text-sm text-gray-400 leading-relaxed">
             Find your inner peace with our expert-guided yoga classes. 
             Mind, body, and soul — all in one place.
@@ -65,25 +71,19 @@ const Footer = () => {
         <div>
           <h3 className="text-white font-semibold mb-4">Contact Us</h3>
           <ul className="space-y-2 text-sm text-gray-400">
-            <li>📍 123 Yoga Street, Delhi, India</li>
-            <li>📞 +91 98765 43210</li>
-            <li>✉️ hello@yogazen.com</li>
+            <li><FaSearchLocation/> 123 Yoga Street, Delhi, India</li>
+            <li><FaPhoneAlt/> +91 98765 43210</li>
+            <li><CiMail/>hello@yogazen.com</li>
           </ul>
 
-          {/* Social Icons */}
-          <div className="flex gap-4 mt-4 text-xl">
-            <a href="#" className="hover:text-green-400 transition">📘</a>
-            <a href="#" className="hover:text-green-400 transition">📸</a>
-            <a href="#" className="hover:text-green-400 transition">🐦</a>
-            <a href="#" className="hover:text-green-400 transition">▶️</a>
-          </div>
+          
         </div>
 
       </div>
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} YogaZen. All rights reserved. Made with 🧘 & ❤️
+        © {new Date().getFullYear()} YogaZen. All rights reserved.
       </div>
     </footer>
   )

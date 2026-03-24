@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import BlogCard from "../Components/layout/common/BlogCard"
 import { blogData } from '../data/blogData'
+import { FaSearch } from "react-icons/fa";
+import { FaFaceFlushed } from "react-icons/fa6";
 
 const categories = ['All', 'Health', 'Meditation', 'Wellness', 'Lifestyle']
 
@@ -34,7 +36,7 @@ const Blog = () => {
 
           {/* Search Bar */}
           <div className="mt-6 flex items-center bg-white rounded-full shadow px-4 py-2 max-w-md mx-auto">
-            <span className="text-gray-400 mr-2">🔍</span>
+            <span className="text-gray-400 mr-2"><FaSearch/></span>
             <input
               type="text"
               placeholder="Search articles..."
@@ -69,7 +71,7 @@ const Blog = () => {
         {/* Blog Cards */}
         {filtered.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-5xl mb-4">😕</p>
+            <p className="text-5xl mb-4"><FaFaceFlushed/></p>
             <p className="text-gray-400 text-lg">No articles found.</p>
           </div>
         ) : (

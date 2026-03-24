@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
+import { FiMapPin, FiPhone, FiMail, FiClock, FiCheckCircle, FiMap } from 'react-icons/fi'
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
@@ -17,10 +19,17 @@ const Contact = () => {
   }
 
   const contactInfo = [
-    { icon: '📍', label: 'Address', value: '123 Yoga Street, Delhi, India' },
-    { icon: '📞', label: 'Phone', value: '+91 98765 43210' },
-    { icon: '✉️', label: 'Email', value: 'hello@yogazen.com' },
-    { icon: '🕐', label: 'Hours', value: 'Mon–Sat: 6AM – 8PM' },
+    { icon: <FiMapPin className="text-green-600 text-lg" />, label: 'Address', value: '123 Yoga Street, Delhi, India' },
+    { icon: <FiPhone className="text-green-600 text-lg" />, label: 'Phone', value: '+91 98765 43210' },
+    { icon: <FiMail className="text-green-600 text-lg" />, label: 'Email', value: 'hello@yogazen.com' },
+    { icon: <FiClock className="text-green-600 text-lg" />, label: 'Hours', value: 'Mon–Sat: 6AM – 8PM' },
+  ]
+
+  const socialIcons = [
+    { icon: <FaFacebook className="text-xl" />, label: 'Facebook' },
+    { icon: <FaInstagram className="text-xl" />, label: 'Instagram' },
+    { icon: <FaTwitter className="text-xl" />, label: 'Twitter' },
+    { icon: <FaYoutube className="text-xl" />, label: 'Youtube' },
   ]
 
   return (
@@ -48,7 +57,7 @@ const Contact = () => {
         {/* Left — Contact Info */}
         <div>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
-            We're Here to Help 🙏
+            We're Here to Help
           </h2>
           <p className="text-gray-500 leading-relaxed mb-8">
             Whether you're a beginner looking to start your yoga journey, or an
@@ -62,7 +71,7 @@ const Contact = () => {
                 key={info.label}
                 className="flex items-center gap-4 bg-green-50 rounded-2xl p-4"
               >
-                <div className="text-2xl w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-2">
+                <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
                   {info.icon}
                 </div>
                 <div>
@@ -77,12 +86,13 @@ const Contact = () => {
           <div className="mt-8">
             <p className="text-gray-500 text-sm mb-3 font-medium">Follow Us:</p>
             <div className="flex gap-3">
-              {['📘', '📸', '🐦', '▶️'].map((icon, i) => (
+              {socialIcons.map((social, i) => (
                 <button
                   key={i}
-                  className="w-10 h-10 bg-green-50 hover:bg-green-100 rounded-xl flex items-center justify-center text-xl transition"
+                  aria-label={social.label}
+                  className="w-10 h-10 bg-green-50 hover:bg-green-100 rounded-xl flex items-center justify-center text-green-600 transition"
                 >
-                  {icon}
+                  {social.icon}
                 </button>
               ))}
             </div>
@@ -93,7 +103,9 @@ const Contact = () => {
         <div className="bg-gray-50 rounded-3xl p-6 sm:p-8">
           {submitted ? (
             <div className="flex flex-col items-center justify-center h-full py-16 text-center">
-              <div className="text-6xl mb-4">🎉</div>
+              <div className="mb-4 text-green-500">
+                <FiCheckCircle className="text-6xl" />
+              </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-2">Message Sent!</h3>
               <p className="text-gray-500 mb-6">
                 Thank you for reaching out. We'll get back to you within 24 hours.
@@ -167,7 +179,7 @@ const Contact = () => {
                   onClick={handleSubmit}
                   className="w-full bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition text-sm"
                 >
-                  Send Message 🚀
+                  Send Message
                 </button>
 
               </div>
@@ -180,7 +192,9 @@ const Contact = () => {
       <section className="max-w-7xl mx-auto px-4 pb-16">
         <div className="bg-green-50 rounded-3xl h-56 sm:h-72 flex items-center justify-center text-center">
           <div>
-            <p className="text-5xl mb-3">🗺️</p>
+            <div className="flex justify-center mb-3 text-green-400">
+              <FiMap className="text-5xl" />
+            </div>
             <p className="text-gray-400 font-medium">Map Placeholder</p>
             <p className="text-gray-400 text-sm">123 Yoga Street, Delhi, India</p>
           </div>
@@ -195,7 +209,6 @@ const Contact = () => {
         <p className="text-green-100 mb-8 text-base sm:text-lg">
           Book a free trial class today and experience the YogaZen difference.
         </p>
-
         <a href="/classes"
           className="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-green-50 transition"
         >

@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { FaBars, FaTimes } from 'react-icons/fa'
+import { GiMeditation } from 'react-icons/gi'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -21,8 +23,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-green-600 tracking-wide">
-          🧘 YogaZen
+        <Link to="/" className="text-2xl font-bold text-green-600 tracking-wide flex items-center gap-2">
+          <GiMeditation className="text-3xl" /> YogaZen
         </Link>
 
         {/* Desktop Links */}
@@ -64,11 +66,10 @@ const Navbar = () => {
           className="md:hidden text-gray-600 focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? (
-            <span className="text-2xl">✕</span>
-          ) : (
-            <span className="text-2xl">☰</span>
-          )}
+          {isOpen
+            ? <FaTimes className="text-2xl" />
+            : <FaBars className="text-2xl" />
+          }
         </button>
 
       </div>

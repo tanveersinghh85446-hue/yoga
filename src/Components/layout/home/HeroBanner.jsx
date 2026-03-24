@@ -57,8 +57,8 @@ const HeroBanner = () => {
 
         {/* Right Image */ }
   <div className="flex justify-center order-1 md:order-2">
-    <div className="bg-green-200 rounded-3xl w-56 h-64 sm:w-72 sm:h-80 md:w-80 md:h-96 flex items-center justify-center text-7xl sm:text-8xl shadow-lg">
-      🧘‍♀️
+    <div className="rounded-3xl w-56 h-64 sm:w-72 sm:h-80 md:w-80 md:h-96 flex items-center justify-center text-7xl sm:text-8xl shadow-lg">
+      <img className='rounded' src="Yoga.jpg" alt="yoga image" />
     </div>
   </div>
 
