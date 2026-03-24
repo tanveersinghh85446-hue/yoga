@@ -60,7 +60,9 @@ const Register = () => {
 
         {/* Logo */}
         <div className="text-center mb-8">
-          <Link to="/" className="text-3xl font-bold text-green-600">🧘 YogaZen</Link>
+          <Link to="/" className="text-3xl font-bold text-green-600 flex items-center justify-center gap-2">
+            <span className="text-4xl">🧘</span> YogaZen
+          </Link>
           <h2 className="text-2xl font-bold text-gray-800 mt-3">Create Account</h2>
           <p className="text-gray-400 text-sm mt-1">Join thousands of yoga lovers today</p>
         </div>
@@ -116,9 +118,9 @@ const Register = () => {
               <button
                 type="button"
                 onClick={() => setShowPass(!showPass)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-green-600 text-lg transition"
               >
-                {showPass ? <FaEyeSlash/> : <FaRegEye/>}
+                {showPass ? <FaEyeSlash /> : <FaRegEye />}
               </button>
             </div>
           </div>
@@ -139,9 +141,10 @@ const Register = () => {
           {/* Submit */}
           <button
             onClick={handleSubmit}
-            className="w-full bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition text-sm mt-2"
+            className="w-full bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition text-sm mt-2 flex items-center justify-center gap-2"
           >
-            Create Account <IoIosCreate/>
+            <IoIosCreate className="text-lg" />
+            Create Account
           </button>
 
         </div>
@@ -154,8 +157,9 @@ const Register = () => {
         </div>
 
         {/* Google */}
-        <button className="w-full border border-gray-200 text-gray-600 py-3 rounded-xl text-sm font-medium hover:bg-gray-50 transition flex items-center justify-center gap-2">
-          <span className="text-lg"><FaEarthAmericas/></span> Continue with Google
+        <button className="w-full border border-gray-200 text-gray-600 py-3 rounded-xl text-sm font-medium hover:bg-gray-50 transition flex items-center justify-center gap-3">
+          <FaEarthAmericas className="text-xl text-green-600" />
+          Continue with Google
         </button>
 
         {/* Login Link */}
