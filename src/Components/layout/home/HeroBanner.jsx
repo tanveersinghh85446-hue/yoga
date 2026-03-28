@@ -1,5 +1,15 @@
 import React, { useState } from 'react'
-
+import { IoFlower } from "react-icons/io5";
+import { PiStarFour } from "react-icons/pi";
+import { IoMdTime } from "react-icons/io";
+import { MdOutlinePhoneAndroid } from "react-icons/md";
+import { LiaMedalSolid } from "react-icons/lia";
+import { GrYoga } from "react-icons/gr";
+import { FaRegCalendarAlt } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import { FaTrophy } from "react-icons/fa";
+import { FaCanadianMapleLeaf } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 const HeroBanner = () => {
   const [imgHover, setImgHover] = useState(false)
 
@@ -46,7 +56,7 @@ const HeroBanner = () => {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 fade-up-1">
           <div className="flex flex-wrap items-center justify-between gap-3 bg-white/50 backdrop-blur-sm border border-green-200 rounded-2xl px-5 py-3">
             <div className="flex items-center gap-2">
-              <span className="text-2xl">🪷</span>
+              <span className="text-2xl"><IoFlower className='text-pink-500'/></span>
               <span className="text-green-700 font-extrabold text-lg tracking-tight">YogaZen</span>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -56,9 +66,9 @@ const HeroBanner = () => {
                 </a>
               ))}
             </div>
-            <a href="/join" className="bg-green-600 hover:bg-green-700 text-white text-sm font-bold px-5 py-2 rounded-full transition-all duration-300 shadow-md shadow-green-200">
+            <Link to="Contact" href="/join" className="bg-green-600 hover:bg-green-700 text-white text-sm font-bold px-5 py-2 rounded-full transition-all duration-300 shadow-md shadow-green-200">
               Join Free
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -69,7 +79,7 @@ const HeroBanner = () => {
               <div key={i} className="flex gap-6 shrink-0">
                 {['Morning Flow', 'Power Yoga', 'Meditation', 'Breathwork', 'Vinyasa', 'Hatha Yoga', 'Yin Yoga', 'Ashtanga'].map((item) => (
                   <span key={item} className="inline-flex items-center gap-2 text-green-700 font-semibold text-sm bg-white/60 border border-green-200 rounded-full px-4 py-1.5">
-                    <span className="text-green-400 text-xs">✦</span> {item}
+                    <span className="text-green-400 text-xs"><PiStarFour/></span> {item}
                   </span>
                 ))}
               </div>
@@ -141,10 +151,10 @@ const HeroBanner = () => {
             {/* Feature Pills */}
             <div className="flex flex-wrap gap-3 justify-center md:justify-start fade-up-5">
               {[
-                { icon: '🕐', text: 'Flexible Timings' },
-                { icon: '📱', text: 'Online & Offline' },
-                { icon: '🏅', text: 'Certified Trainers' },
-                { icon: '🧘', text: 'All Levels Welcome' },
+                { icon: <IoMdTime className='text-purple-600'/>, text: 'Flexible Timings' },
+                { icon: <MdOutlinePhoneAndroid className='text-black'/>, text: 'Online & Offline' },
+                { icon: <LiaMedalSolid className='text-orange-400'/>, text: 'Certified Trainers' },
+                { icon: <GrYoga className='text-green-500'/>, text: 'All Levels Welcome' },
               ].map((pill) => (
                 <div key={pill.text} className="flex items-center gap-2 bg-white/70 border border-green-200 rounded-full px-4 py-2 shadow-sm hover:shadow-md hover:border-green-400 transition-all duration-200">
                   <span className="text-base">{pill.icon}</span>
@@ -163,7 +173,7 @@ const HeroBanner = () => {
 
               {/* Live Class Badge */}
               <div className="absolute -top-4 -left-4 z-20 bg-white rounded-2xl shadow-lg px-4 py-2.5 flex items-center gap-2.5 border border-green-100">
-                <div className="w-8 h-8 bg-green-100 rounded-xl flex items-center justify-center text-lg">🧘</div>
+                <div className="w-8 h-8 bg-green-100 rounded-xl flex items-center justify-center text-lg"><GrYoga className='text-green-500'/></div>
                 <div>
                   <p className="text-xs font-bold text-gray-700 leading-none">Live Class</p>
                   <p className="text-xs text-green-600 font-semibold mt-0.5">Starting Now</p>
@@ -221,10 +231,10 @@ const HeroBanner = () => {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 fade-up-5">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { icon: '🌿', title: 'Holistic Approach', desc: 'Mind, body & soul balance' },
-              { icon: '🏆', title: 'Award Winning', desc: 'Best yoga studio 2024' },
-              { icon: '💚', title: 'Community', desc: '500+ active members' },
-              { icon: '📅', title: 'Daily Sessions', desc: 'Morning & evening batches' },
+              { icon: <FaCanadianMapleLeaf className='text-green-500'/>, title: 'Holistic Approach', desc: 'Mind, body & soul balance' },
+              { icon: <FaTrophy className='text-yellow-300'/>, title: 'Award Winning', desc: 'Best yoga studio 2024' },
+              { icon: <FaHeart className='text-red-600'/>, title: 'Community', desc: '500+ active members' },
+              { icon: <FaRegCalendarAlt className='text-blue-600'/>, title: 'Daily Sessions', desc: 'Morning & evening batches' },
             ].map((card) => (
               <div key={card.title} className="bg-white/60 backdrop-blur-sm border border-green-200 rounded-2xl px-4 py-4 flex items-center gap-3 hover:bg-white/80 hover:shadow-md transition-all duration-300 group">
                 <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform duration-200">
