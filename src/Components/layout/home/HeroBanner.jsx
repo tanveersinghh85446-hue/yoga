@@ -56,7 +56,7 @@ const HeroBanner = () => {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 fade-up-1">
           <div className="flex flex-wrap items-center justify-between gap-3 bg-white/50 backdrop-blur-sm border border-green-200 rounded-2xl px-5 py-3">
             <div className="flex items-center gap-2">
-              <span className="text-2xl"><IoFlower className='text-pink-500'/></span>
+              <span className="text-2xl"><IoFlower className='text-pink-500' /></span>
               <span className="text-green-700 font-extrabold text-lg tracking-tight">YogaZen</span>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -79,7 +79,7 @@ const HeroBanner = () => {
               <div key={i} className="flex gap-6 shrink-0">
                 {['Morning Flow', 'Power Yoga', 'Meditation', 'Breathwork', 'Vinyasa', 'Hatha Yoga', 'Yin Yoga', 'Ashtanga'].map((item) => (
                   <span key={item} className="inline-flex items-center gap-2 text-green-700 font-semibold text-sm bg-white/60 border border-green-200 rounded-full px-4 py-1.5">
-                    <span className="text-green-400 text-xs"><PiStarFour/></span> {item}
+                    <span className="text-green-400 text-xs"><PiStarFour /></span> {item}
                   </span>
                 ))}
               </div>
@@ -136,8 +136,8 @@ const HeroBanner = () => {
             <div className="flex gap-8 sm:gap-10 mb-8 fade-up-4">
               {[
                 { value: '500+', label: 'Happy Students' },
-                { value: '20+',  label: 'Yoga Classes' },
-                { value: '10+',  label: 'Expert Instructors' },
+                { value: '20+', label: 'Yoga Classes' },
+                { value: '10+', label: 'Expert Instructors' },
               ].map((stat) => (
                 <div key={stat.label} className="text-center md:text-left group">
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-green-600 group-hover:scale-110 transition-transform duration-200 inline-block">
@@ -151,10 +151,10 @@ const HeroBanner = () => {
             {/* Feature Pills */}
             <div className="flex flex-wrap gap-3 justify-center md:justify-start fade-up-5">
               {[
-                { icon: <IoMdTime className='text-purple-600'/>, text: 'Flexible Timings' },
-                { icon: <MdOutlinePhoneAndroid className='text-black'/>, text: 'Online & Offline' },
-                { icon: <LiaMedalSolid className='text-orange-400'/>, text: 'Certified Trainers' },
-                { icon: <GrYoga className='text-green-500'/>, text: 'All Levels Welcome' },
+                { icon: <IoMdTime className='text-purple-600' />, text: 'Flexible Timings' },
+                { icon: <MdOutlinePhoneAndroid className='text-black' />, text: 'Online & Offline' },
+                { icon: <LiaMedalSolid className='text-orange-400' />, text: 'Certified Trainers' },
+                { icon: <GrYoga className='text-green-500' />, text: 'All Levels Welcome' },
               ].map((pill) => (
                 <div key={pill.text} className="flex items-center gap-2 bg-white/70 border border-green-200 rounded-full px-4 py-2 shadow-sm hover:shadow-md hover:border-green-400 transition-all duration-200">
                   <span className="text-base">{pill.icon}</span>
@@ -173,7 +173,7 @@ const HeroBanner = () => {
 
               {/* Live Class Badge */}
               <div className="absolute -top-4 -left-4 z-20 bg-white rounded-2xl shadow-lg px-4 py-2.5 flex items-center gap-2.5 border border-green-100">
-                <div className="w-8 h-8 bg-green-100 rounded-xl flex items-center justify-center text-lg"><GrYoga className='text-green-500'/></div>
+                <div className="w-8 h-8 bg-green-100 rounded-xl flex items-center justify-center text-lg"><GrYoga className='text-green-500' /></div>
                 <div>
                   <p className="text-xs font-bold text-gray-700 leading-none">Live Class</p>
                   <p className="text-xs text-green-600 font-semibold mt-0.5">Starting Now</p>
@@ -183,9 +183,9 @@ const HeroBanner = () => {
               {/* Rating Badge */}
               <div className="absolute -bottom-4 -right-4 z-20 bg-white rounded-2xl shadow-lg px-4 py-2.5 border border-green-100">
                 <div className="flex items-center gap-0.5 mb-0.5">
-                  {[1,2,3,4,5].map(i => (
+                  {[1, 2, 3, 4, 5].map(i => (
                     <svg key={i} className="w-3 h-3 fill-yellow-400" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
@@ -227,22 +227,32 @@ const HeroBanner = () => {
           </div>
         </div>
 
+        
+
         {/* ── BOTTOM TRUST BAR ── */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 fade-up-5">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { icon: <FaCanadianMapleLeaf className='text-green-500'/>, title: 'Holistic Approach', desc: 'Mind, body & soul balance' },
-              { icon: <FaTrophy className='text-yellow-300'/>, title: 'Award Winning', desc: 'Best yoga studio 2024' },
-              { icon: <FaHeart className='text-red-600'/>, title: 'Community', desc: '500+ active members' },
-              { icon: <FaRegCalendarAlt className='text-blue-600'/>, title: 'Daily Sessions', desc: 'Morning & evening batches' },
+              { icon: <FaCanadianMapleLeaf className='text-green-500' />, title: 'Holistic Approach', desc: 'Mind, body & soul balance' },
+              { icon: <FaTrophy className='text-yellow-400' />, title: 'Award Winning', desc: 'Best yoga studio 2024' },
+              { icon: <FaHeart className='text-red-500' />, title: 'Community', desc: '500+ active members' },
+              { icon: <FaRegCalendarAlt className='text-blue-500' />, title: 'Daily Sessions', desc: 'Morning & evening batches' },
             ].map((card) => (
-              <div key={card.title} className="bg-white/60 backdrop-blur-sm border border-green-200 rounded-2xl px-4 py-4 flex items-center gap-3 hover:bg-white/80 hover:shadow-md transition-all duration-300 group">
-                <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform duration-200">
+              <div
+                key={card.title}
+                className="bg-white/70 backdrop-blur-sm border border-green-200 rounded-2xl p-4 flex items-center gap-3 hover:bg-white/90 hover:shadow-md transition-all duration-300 group"
+              >
+                <div className="w-10 h-10 sm:w-11 sm:h-11 bg-green-100 rounded-xl flex items-center justify-center text-lg sm:text-xl shrink-0 group-hover:scale-110 transition-transform duration-200">
                   {card.icon}
                 </div>
+
                 <div>
-                  <p className="text-gray-700 font-bold text-sm leading-tight">{card.title}</p>
-                  <p className="text-gray-400 text-xs mt-0.5">{card.desc}</p>
+                  <p className="text-gray-700 font-semibold text-sm sm:text-base leading-tight">
+                    {card.title}
+                  </p>
+                  <p className="text-gray-400 text-xs sm:text-sm">
+                    {card.desc}
+                  </p>
                 </div>
               </div>
             ))}
