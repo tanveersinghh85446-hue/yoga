@@ -1,16 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { FaClock } from 'react-icons/fa'
-import { iconMap } from '../../../data/iconMap'
 
 const ClassCard = ({ cls }) => {
-  const IconComponent = iconMap[cls.icon]
-
   return (
     <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition duration-300 overflow-hidden border border-gray-100">
-      {/* Top Color Block */}
-      <div className="bg-green-50 h-36 flex items-center justify-center">
-        {IconComponent && <IconComponent className="text-7xl text-green-600" />}
+      {/* Image */}
+      <div className="h-36 overflow-hidden">
+        <img
+          src={cls.image}
+          alt={cls.name}
+          className="w-full h-full object-cover"
+        />
       </div>
 
       {/* Content */}

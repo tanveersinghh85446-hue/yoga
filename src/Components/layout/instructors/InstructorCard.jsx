@@ -1,15 +1,16 @@
 import React from 'react'
 import { FaStar } from 'react-icons/fa'
-import { iconMap } from '../../../data/iconMap'
 
 const InstructorCard = ({ instructor }) => {
-  const IconComponent = iconMap[instructor.icon]
-
   return (
     <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition duration-300 border border-gray-100 overflow-hidden">
-      {/* Top */}
-      <div className="bg-green-50 h-40 flex items-center justify-center">
-        {IconComponent && <IconComponent className="text-8xl text-green-600" />}
+      {/* Image */}
+      <div className="h-40 overflow-hidden">
+        <img
+          src={instructor.image}
+          alt={instructor.name}
+          className="w-full h-full object-cover"
+        />
       </div>
 
       {/* Content */}
